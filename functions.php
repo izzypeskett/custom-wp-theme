@@ -4,12 +4,14 @@ function load_styles(){
   wp_register_style('css-style', get_template_directory_uri() . '/style.css', array(), false, 
   'all');
   wp_enqueue_style('css-style');
+  wp_register_style( 'nav-bar', get_template_directory_uri() . '/css/nav-bar.scss', array(), false, 'all');
+  wp_enqueue_style( 'nav-bar' );
 }
 add_action( 'wp_enqueue_scripts', 'load_styles' );
 
 
 function load_scripts(){
-  wp_register_script('js-script', get_template_directory_uri() . '/js/script.js', array('jquery', 'jquery-ui-core', 'jquery-ui-tabs'), null, false);
+  wp_register_script('js-script', get_template_directory_uri() . '/js/script.js', array('jquery', 'jquery-ui-core', 'jquery-ui-tabs', 'jquery-ui-menu'), null, false);
   wp_enqueue_script('js-script');
 }
 add_action( 'wp_enqueue_scripts', 'load_scripts');
@@ -37,50 +39,6 @@ function special_nav_class($classes, $item){
      return $classes;
 }
 
-if( function_exists('acf_add_local_field_group') ):
-
-  acf_add_local_field_group(array(
-    'key' => 'group_5e104708654c2',
-    'title' => 'Home',
-    'fields' => array(
-      array(
-        'key' => 'field_5e104711f594a',
-        'label' => 'Tab display',
-        'name' => '',
-        'type' => 'tab',
-        'instructions' => '',
-        'required' => 0,
-        'conditional_logic' => 0,
-        'wrapper' => array(
-          'width' => '',
-          'class' => '',
-          'id' => '',
-        ),
-        'placement' => 'top',
-        'endpoint' => 0,
-      ),
-    ),
-    'location' => array(
-      array(
-        array(
-          'param' => 'page',
-          'operator' => '==',
-          'value' => '37',
-        ),
-      ),
-    ),
-    'menu_order' => 0,
-    'position' => 'normal',
-    'style' => 'default',
-    'label_placement' => 'top',
-    'instruction_placement' => 'label',
-    'hide_on_screen' => '',
-    'active' => true,
-    'description' => '',
-  ));
-  
-  endif;
-add_action('acf/init', 'acf_add_local_field_group');
   
 
 ?>

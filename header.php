@@ -13,7 +13,6 @@
   <?php the_field( 'page_title')?>
   
   </header>
-  
   <?php wp_nav_menu (
     array(
       'theme_location' => 'top-menu',
